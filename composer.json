@@ -1,6 +1,6 @@
 {
-  "name": "nmiles/laminas-pdf",
-  "description": "Laminas Pdf Component",
+  "name": "littlerocketdev/laminas-pdf",
+  "description": "Laminas enabled Pdf Component",
   "type": "library",
   "license": "BSD-3-Clause",
   "keywords": [
