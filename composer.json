@@ -1,5 +1,5 @@
 {
-  "name": "littlerocketdev/laminas-pdf",
+  "name": "littlerocket/laminas-pdf",
   "description": "Laminas enabled Pdf Component",
   "type": "library",
   "license": "BSD-3-Clause",
