@@ -12,7 +12,6 @@
 namespace LaminasPdf;
 
 use LaminasPdf\Exception;
-use Laminas\Memory;
 
 /**
  * General entity which describes PDF document.
@@ -132,13 +131,6 @@ class PdfDocument
     protected $_objFactory = null;
 
     /**
-     * Memory manager for stream objects
-     *
-     * @var \Laminas\Memory\MemoryManager|null
-     */
-    protected static $_memoryManager = null;
-
-    /**
      * PDF file parser.
      * It's not used, but has to be destroyed only with LaminasPdf object
      *
@@ -153,38 +145,12 @@ class PdfDocument
      */
     protected $_pdfHeaderVersion;
 
-
     /**
      * List of inheritable attributesfor pages tree
      *
      * @var array
      */
     protected static $_inheritableAttributes = ['Resources', 'MediaBox', 'CropBox', 'Rotate'];
-
-    /**
-     * Request used memory manager
-     *
-     * @return Laminas\Memory\MemoryManager
-     */
-    public static function getMemoryManager()
-    {
-        if (self::$_memoryManager === null) {
-            self::$_memoryManager = new Memory\MemoryManager();
-        }
-
-        return self::$_memoryManager;
-    }
-
-    /**
-     * Set user defined memory manager
-     *
-     * @param Memory\MemoryManager $memoryManager
-     */
-    public static function setMemoryManager(Memory\MemoryManager $memoryManager): void
-    {
-        self::$_memoryManager = $memoryManager;
-    }
-
 
     /**
      * Create new PDF document from a $source string

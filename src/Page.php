@@ -1428,7 +1428,7 @@ class Page
      * @param integer $fillType
      * @return \LaminasPdf\Page
      */
-    public function drawRectangle($x1, $y1, $x2, $y2, $fillType = self::SHAPE_DRAW_FILL_AND_STROKE): static
+    public function drawRectangle($x1, $y1, $x2, $y2, $fillType = self::SHAPE_DRAW_FILL_AND_STROKE): self
     {
         $this->_addProcSet('PDF');
 
@@ -1482,7 +1482,7 @@ class Page
         $y2,
         $radius,
         $fillType = self::SHAPE_DRAW_FILL_AND_STROKE
-    ): static {
+    ): self {
 
         $this->_addProcSet('PDF');
 
