@@ -54,7 +54,7 @@ class Text extends AbstractAnnotation
      * @param string $text
      * @return \LaminasPdf\Annotation\Text
      */
-    public static function create($x1, $y1, $x2, $y2, $text)
+    public static function create($x1, $y1, $x2, $y2, $text): self
     {
         $annotationDictionary = new InternalType\DictionaryObject();
 

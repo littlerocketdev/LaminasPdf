@@ -87,7 +87,7 @@ class Created extends AbstractOutline
      * @param string $title
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setTitle($title)
+    public function setTitle($title): static
     {
         $this->_title = $title;
         return $this;
@@ -109,7 +109,7 @@ class Created extends AbstractOutline
      * @param boolean $isItalic
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setIsItalic($isItalic)
+    public function setIsItalic($isItalic): static
     {
         $this->_italic = $isItalic;
         return $this;
@@ -131,7 +131,7 @@ class Created extends AbstractOutline
      * @param boolean $isBold
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setIsBold($isBold)
+    public function setIsBold($isBold): static
     {
         $this->_bold = $isBold;
         return $this;
@@ -155,7 +155,7 @@ class Created extends AbstractOutline
      * @param \LaminasPdf\Color\Rgb $color
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setColor(Pdf\Color\Rgb $color)
+    public function setColor(Pdf\Color\Rgb $color): static
     {
         $this->_color = $color;
         return $this;
@@ -179,7 +179,7 @@ class Created extends AbstractOutline
      * @return \LaminasPdf\Outline\AbstractOutline
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function setTarget($target = null)
+    public function setTarget($target = null): static
     {
         if (is_string($target)) {
             $target = new Pdf\Destination\Named($target);
@@ -201,7 +201,7 @@ class Created extends AbstractOutline
      * @param array $options
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function __construct($options = [])
+    public function __construct(array $options = [])
     {
         if (!isset($options['title'])) {
             throw new Exception\InvalidArgumentException('Title is required.');

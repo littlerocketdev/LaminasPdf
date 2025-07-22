@@ -33,7 +33,7 @@ class Named extends AbstractDestination
      *
      * @var \LaminasPdf\InternalType\NameObject|\LaminasPdf\InternalType\StringObject
      */
-    protected $_nameElement;
+    protected \LaminasPdf\InternalType\AbstractTypeObject $_nameElement;
 
     /**
      * Named destination object constructor
@@ -56,7 +56,7 @@ class Named extends AbstractDestination
      * @param string $name
      * @return \LaminasPdf\Destination\Named
      */
-    public static function create($name)
+    public static function create($name): self
     {
         return new self(new InternalType\StringObject($name));
     }

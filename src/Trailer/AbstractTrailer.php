@@ -22,14 +22,12 @@ use LaminasPdf\InternalType;
  */
 abstract class AbstractTrailer
 {
-    private static $_allowedKeys = ['Size', 'Prev', 'Root', 'Encrypt', 'Info', 'ID', 'Index', 'W', 'XRefStm', 'DocChecksum'];
+    private static array $_allowedKeys = ['Size', 'Prev', 'Root', 'Encrypt', 'Info', 'ID', 'Index', 'W', 'XRefStm', 'DocChecksum'];
 
     /**
      * Trailer dictionary.
-     *
-     * @var \LaminasPdf\InternalType\DictionaryObject
      */
-    private $_dict;
+    private \LaminasPdf\InternalType\DictionaryObject $_dict;
 
     /**
      * Check if key is correct
@@ -37,7 +35,7 @@ abstract class AbstractTrailer
      * @param string $key
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _checkDictKey($key)
+    private function _checkDictKey($key): void
     {
         if (!in_array($key, self::$_allowedKeys)) {
             /** @todo Make warning (log entry) instead of an exception */

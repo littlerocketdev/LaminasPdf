@@ -36,7 +36,7 @@ class Loaded extends AbstractOutline
      *     | \LaminasPdf\InternalType\IndirectObject
      *     | \LaminasPdf\InternalType\IndirectObjectReference
      */
-    protected $_outlineDictionary;
+    protected \LaminasPdf\InternalType\AbstractTypeObject $_outlineDictionary;
 
     /**
      * original array of child outlines
@@ -65,7 +65,7 @@ class Loaded extends AbstractOutline
      * @param string $title
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setTitle($title)
+    public function setTitle($title): static
     {
         $this->_outlineDictionary->Title->touch();
         $this->_outlineDictionary->Title = new InternalType\StringObject($title);
@@ -78,7 +78,7 @@ class Loaded extends AbstractOutline
      * @param boolean $isOpen
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setIsOpen($isOpen)
+    public function setIsOpen($isOpen): static
     {
         parent::setIsOpen($isOpen);
 
@@ -102,7 +102,7 @@ class Loaded extends AbstractOutline
      *
      * @return boolean
      */
-    public function isItalic()
+    public function isItalic(): false|int
     {
         if ($this->_outlineDictionary->F === null) {
             return false;
@@ -116,7 +116,7 @@ class Loaded extends AbstractOutline
      * @param boolean $isItalic
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setIsItalic($isItalic)
+    public function setIsItalic($isItalic): static
     {
         if ($this->_outlineDictionary->F === null) {
             $this->_outlineDictionary->touch();
@@ -137,7 +137,7 @@ class Loaded extends AbstractOutline
      *
      * @return boolean
      */
-    public function isBold()
+    public function isBold(): false|int
     {
         if ($this->_outlineDictionary->F === null) {
             return false;
@@ -151,7 +151,7 @@ class Loaded extends AbstractOutline
      * @param boolean $isBold
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setIsBold($isBold)
+    public function setIsBold($isBold): static
     {
         if ($this->_outlineDictionary->F === null) {
             $this->_outlineDictionary->touch();
@@ -173,7 +173,7 @@ class Loaded extends AbstractOutline
      *
      * @return \LaminasPdf\Color\Rgb
      */
-    public function getColor()
+    public function getColor(): ?\LaminasPdf\Color\Rgb
     {
         if ($this->_outlineDictionary->C === null) {
             return null;
@@ -191,7 +191,7 @@ class Loaded extends AbstractOutline
      * @param \LaminasPdf\Color\Rgb $color
      * @return \LaminasPdf\Outline\AbstractOutline
      */
-    public function setColor(Color\Rgb $color)
+    public function setColor(Color\Rgb $color): static
     {
         $this->_outlineDictionary->touch();
 
@@ -234,7 +234,7 @@ class Loaded extends AbstractOutline
      * @return \LaminasPdf\Outline\AbstractOutline
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function setTarget($target = null)
+    public function setTarget($target = null): static
     {
         $this->_outlineDictionary->touch();
 
@@ -417,7 +417,7 @@ class Loaded extends AbstractOutline
         return $this->_outlineDictionary;
     }
 
-    public function dump($level = 0)
+    public function dump($level = 0): void
     {
         printf(":%3d:%s:%s:%s%s  :\n", count($this->childOutlines), $this->isItalic() ? 'i' : ' ', $this->isBold() ? 'b' : ' ', str_pad('', 4 * $level), $this->getTitle());
 

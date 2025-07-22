@@ -133,7 +133,7 @@ class Png extends AbstractImage
     /**
      * Reads and parses the image data from the file on disk.
      */
-    public function parse()
+    public function parse(): void
     {
         if ($this->_isParsed) {
             return;

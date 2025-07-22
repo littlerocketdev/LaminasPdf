@@ -132,7 +132,7 @@ class Extracted extends AbstractFont
      * @param array $characterCodes Array of Unicode character codes (code points).
      * @return array Array of glyph numbers.
      */
-    public function glyphNumbersForCharacters($characterCodes)
+    public function glyphNumbersForCharacters($characterCodes): never
     {
         throw new Exception\NotImplementedException(self::OPERATION_NOT_SUPPORTED);
     }
@@ -149,7 +149,7 @@ class Extracted extends AbstractFont
      * @param integer $characterCode Unicode character code (code point).
      * @return integer Glyph number.
      */
-    public function glyphNumberForCharacter($characterCode)
+    public function glyphNumberForCharacter($characterCode): never
     {
         throw new Exception\NotImplementedException(self::OPERATION_NOT_SUPPORTED);
     }
@@ -172,7 +172,7 @@ class Extracted extends AbstractFont
      *   If omitted, uses 'current locale'.
      * @return float
      */
-    public function getCoveredPercentage($string, $charEncoding = '')
+    public function getCoveredPercentage($string, $charEncoding = ''): never
     {
         throw new Exception\NotImplementedException(self::OPERATION_NOT_SUPPORTED);
     }
@@ -189,7 +189,7 @@ class Extracted extends AbstractFont
      * @return array Array of glyph widths (integers).
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function widthsForGlyphs($glyphNumbers)
+    public function widthsForGlyphs($glyphNumbers): never
     {
         throw new Exception\NotImplementedException(self::OPERATION_NOT_SUPPORTED);
     }
@@ -203,7 +203,7 @@ class Extracted extends AbstractFont
      * @return integer
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function widthForGlyph($glyphNumber)
+    public function widthForGlyph($glyphNumber): never
     {
         throw new Exception\NotImplementedException(self::OPERATION_NOT_SUPPORTED);
     }
@@ -217,7 +217,7 @@ class Extracted extends AbstractFont
      * @param string $charEncoding Character encoding of source text.
      * @return string
      */
-    public function encodeString($string, $charEncoding)
+    public function encodeString($string, $charEncoding): string|false
     {
         if ($this->_encoding == 'Identity-H') {
             return iconv($charEncoding, 'UTF-16BE', $string);
@@ -239,7 +239,7 @@ class Extracted extends AbstractFont
      * @param string $charEncoding Character encoding of resulting text.
      * @return string
      */
-    public function decodeString($string, $charEncoding)
+    public function decodeString($string, $charEncoding): string|false
     {
         if ($this->_encoding == 'Identity-H') {
             return iconv('UTF-16BE', $charEncoding, $string);

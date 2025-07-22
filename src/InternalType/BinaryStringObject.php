@@ -36,7 +36,7 @@ class BinaryStringObject extends StringObject
      * @param string $inStr
      * @return string
      */
-    public static function escape($inStr)
+    public static function escape($inStr): string
     {
         return strtoupper(bin2hex($inStr));
     }
@@ -48,7 +48,7 @@ class BinaryStringObject extends StringObject
      * @param string $inStr
      * @return string
      */
-    public static function unescape($inStr)
+    public static function unescape($inStr): string
     {
         $chunks = [];
         $offset = 0;
@@ -79,7 +79,7 @@ class BinaryStringObject extends StringObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         return '<' . self::escape((string)$this->value) . '>';
     }

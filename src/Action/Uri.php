@@ -62,7 +62,7 @@ class Uri extends AbstractAction
      * @param boolean $isMap A flag specifying whether to track the mouse position when the URI is resolved
      * @return \LaminasPdf\Action\Uri
      */
-    public static function create($uri, $isMap = false)
+    public static function create($uri, $isMap = false): self
     {
         self::_validateUri($uri);
 
@@ -84,7 +84,7 @@ class Uri extends AbstractAction
      * @param string $uri The uri to resolve, encoded in 7-bit ASCII.
      * @return \LaminasPdf\Action\Uri
      */
-    public function setUri($uri)
+    public function setUri($uri): self
     {
         static::_validateUri($uri);
 
@@ -115,7 +115,7 @@ class Uri extends AbstractAction
      * @param boolean $isMap A flag specifying whether to track the mouse position when the URI is resolved
      * @return \LaminasPdf\Action\Uri
      */
-    public function setIsMap($isMap)
+    public function setIsMap($isMap): self
     {
         $this->_actionDictionary->touch();
 
@@ -138,7 +138,7 @@ class Uri extends AbstractAction
      *
      * @return boolean
      */
-    public function getIsMap()
+    public function getIsMap(): bool
     {
         return $this->_actionDictionary->IsMap !== null &&
             $this->_actionDictionary->IsMap->value;

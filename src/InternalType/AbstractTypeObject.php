@@ -32,10 +32,8 @@ abstract class AbstractTypeObject
 
     /**
      * Reference to the top level indirect object, which contains this element.
-     *
-     * @var \LaminasPdf\InternalType\IndirectObject
      */
-    private $_parentObject = null;
+    private ?\LaminasPdf\InternalType\IndirectObject $_parentObject = null;
 
     /**
      * Return type of the element.
@@ -81,7 +79,7 @@ abstract class AbstractTypeObject
      *
      * @param \LaminasPdf\InternalType\IndirectObject $parent
      */
-    public function setParentObject(IndirectObject $parent)
+    public function setParentObject(IndirectObject $parent): void
     {
         $this->_parentObject = $parent;
     }
@@ -104,7 +102,7 @@ abstract class AbstractTypeObject
      * We don't automate this action to keep control on PDF update process.
      * All new objects are treated as "modified" automatically.
      */
-    public function touch()
+    public function touch(): void
     {
         if ($this->_parentObject !== null) {
             $this->_parentObject->touch();
@@ -114,7 +112,7 @@ abstract class AbstractTypeObject
     /**
      * Clean up resources, used by object
      */
-    public function cleanUp()
+    public function cleanUp(): void
     {
         // Do nothing
     }

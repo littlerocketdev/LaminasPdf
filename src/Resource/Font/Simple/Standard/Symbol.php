@@ -153,7 +153,7 @@ class Symbol extends AbstractStandard
      * @param string $charEncoding Character encoding of source text.
      * @return string
      */
-    public function encodeString($string, $charEncoding)
+    public function encodeString($string, $charEncoding): string
     {
         /* This isn't the optimal time to perform this conversion, but it must
          * live here until the remainder of the layout code is completed. This,
@@ -190,7 +190,7 @@ class Symbol extends AbstractStandard
      * @param string $charEncoding Character encoding of resulting text.
      * @return string
      */
-    public function decodeString($string, $charEncoding)
+    public function decodeString($string, $charEncoding): string|false
     {
         $decodedString = '';
         for ($i = 0; $i < strlen($string); $i++) {

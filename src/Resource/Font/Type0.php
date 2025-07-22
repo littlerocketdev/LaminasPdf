@@ -48,10 +48,8 @@ class Type0 extends AbstractFont
 {
     /**
      * Descendant CIDFont
-     *
-     * @var \LaminasPdf\Resource\Font\CidFont\AbstractCidFont
      */
-    private $_descendantFont;
+    private \LaminasPdf\Resource\Font\CidFont\AbstractCidFont $_descendantFont;
 
 
     /**
@@ -59,7 +57,7 @@ class Type0 extends AbstractFont
      *
      * @return string
      */
-    private static function getToUnicodeCMapData()
+    private static function getToUnicodeCMapData(): string
     {
         return '/CIDInit /ProcSet findresource begin ' . "\n"
             . '12 dict begin ' . "\n"
@@ -219,7 +217,7 @@ class Type0 extends AbstractFont
      * @param string $charEncoding Character encoding of source text.
      * @return string
      */
-    public function encodeString($string, $charEncoding)
+    public function encodeString($string, $charEncoding): string|false
     {
         return iconv($charEncoding, 'UTF-16BE', $string);
     }
@@ -233,7 +231,7 @@ class Type0 extends AbstractFont
      * @param string $charEncoding Character encoding of resulting text.
      * @return string
      */
-    public function decodeString($string, $charEncoding)
+    public function decodeString($string, $charEncoding): string|false
     {
         return iconv('UTF-16BE', $charEncoding, $string);
     }

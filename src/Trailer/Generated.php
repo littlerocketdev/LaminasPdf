@@ -37,7 +37,7 @@ class Generated extends AbstractTrailer
      *
      * @return string
      */
-    public function getPDFLength()
+    public function getPDFLength(): int
     {
         return strlen(Pdf\PdfDocument::PDF_HEADER);
     }
@@ -47,7 +47,7 @@ class Generated extends AbstractTrailer
      *
      * @return string
      */
-    public function getPDFString()
+    public function getPDFString(): string
     {
         return Pdf\PdfDocument::PDF_HEADER;
     }
@@ -58,7 +58,7 @@ class Generated extends AbstractTrailer
      *
      * @return integer
      */
-    public function getLastFreeObject()
+    public function getLastFreeObject(): int
     {
         return 0;
     }

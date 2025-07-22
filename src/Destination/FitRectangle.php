@@ -42,7 +42,7 @@ class FitRectangle extends AbstractExplicitDestination
      * @return \LaminasPdf\Destination\FitRectangle
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function create($page, $left, $bottom, $right, $top)
+    public static function create($page, $left, $bottom, $right, $top): self
     {
         $destinationArray = new InternalType\ArrayObject();
 
@@ -79,7 +79,7 @@ class FitRectangle extends AbstractExplicitDestination
      * @param float $left
      * @return \LaminasPdf\Destination\FitRectangle
      */
-    public function setLeftEdge($left)
+    public function setLeftEdge($left): static
     {
         $this->_destinationArray->items[2] = new InternalType\NumericObject($left);
         return $this;
@@ -101,7 +101,7 @@ class FitRectangle extends AbstractExplicitDestination
      * @param float $bottom
      * @return \LaminasPdf\Destination\FitRectangle
      */
-    public function setBottomEdge($bottom)
+    public function setBottomEdge($bottom): static
     {
         $this->_destinationArray->items[3] = new InternalType\NumericObject($bottom);
         return $this;
@@ -123,7 +123,7 @@ class FitRectangle extends AbstractExplicitDestination
      * @param float $right
      * @return \LaminasPdf\Destination\FitRectangle
      */
-    public function setRightEdge($right)
+    public function setRightEdge($right): static
     {
         $this->_destinationArray->items[4] = new InternalType\NumericObject($right);
         return $this;
@@ -145,7 +145,7 @@ class FitRectangle extends AbstractExplicitDestination
      * @param float $top
      * @return \LaminasPdf\Destination\FitRectangle
      */
-    public function setTopEdge($top)
+    public function setTopEdge($top): static
     {
         $this->_destinationArray->items[5] = new InternalType\NumericObject($top);
         return $this;

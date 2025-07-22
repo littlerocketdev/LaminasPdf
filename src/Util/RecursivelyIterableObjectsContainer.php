@@ -19,7 +19,7 @@ namespace LaminasPdf\Util;
  */
 class RecursivelyIterableObjectsContainer implements \RecursiveIterator, \Countable
 {
-    protected $_objects = [];
+    protected array $_objects;
 
     public function __construct(array $objects)
     {

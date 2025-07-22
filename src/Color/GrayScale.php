@@ -25,10 +25,8 @@ class GrayScale implements ColorInterface
     /**
      * GrayLevel.
      * 0.0 (black) - 1.0 (white)
-     *
-     * @var \LaminasPdf\InternalType\NumericObject
      */
-    private $_grayLevel;
+    private \LaminasPdf\InternalType\NumericObject $_grayLevel;
 
     /**
      * Object constructor
@@ -55,7 +53,7 @@ class GrayScale implements ColorInterface
      * @param boolean $stroking
      * @return string
      */
-    public function instructions($stroking)
+    public function instructions($stroking): string
     {
         return $this->_grayLevel->toString() . ($stroking ? " G\n" : " g\n");
     }
@@ -65,7 +63,7 @@ class GrayScale implements ColorInterface
      *
      * @return array
      */
-    public function getComponents()
+    public function getComponents(): array
     {
         return [$this->_grayLevel->value];
     }

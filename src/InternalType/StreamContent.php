@@ -44,7 +44,7 @@ class StreamContent extends AbstractTypeObject
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return AbstractTypeObject::TYPE_STREAM;
     }
@@ -55,7 +55,7 @@ class StreamContent extends AbstractTypeObject
      *
      * @return integer
      */
-    public function length()
+    public function length(): int
     {
         return strlen($this->value->getRef());
     }
@@ -64,7 +64,7 @@ class StreamContent extends AbstractTypeObject
      * Clear stream
      *
      */
-    public function clear()
+    public function clear(): void
     {
         $ref = &$this->value->getRef();
         $ref = '';
@@ -76,7 +76,7 @@ class StreamContent extends AbstractTypeObject
      *
      * @param mixed $val
      */
-    public function append($val)
+    public function append($val): void
     {
         $ref = &$this->value->getRef();
         $ref .= (string)$val;
@@ -91,7 +91,7 @@ class StreamContent extends AbstractTypeObject
      * @param integer $mode Cloning mode (defines filter for objects cloning)
      * @returns \LaminasPdf\InternalType\AbstractTypeObject
      */
-    public function makeClone(Pdf\ObjectFactory $factory, array &$processed, $mode)
+    public function makeClone(Pdf\ObjectFactory $factory, array &$processed, $mode): self
     {
         return new self($this->value->getRef());
     }
@@ -102,7 +102,7 @@ class StreamContent extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         return "stream\n" . $this->value->getRef() . "\nendstream";
     }

@@ -35,7 +35,7 @@ abstract class AbstractAnnotation
      *
      * @var DictionaryObject|IndirectObject|IndirectObjectReference
      */
-    protected $_annotationDictionary;
+    protected \LaminasPdf\InternalType\AbstractTypeObject $_annotationDictionary;
 
     /**
      * Get annotation dictionary
@@ -224,7 +224,7 @@ abstract class AbstractAnnotation
      * @return \LaminasPdf\Annotation\AbstractAnnotation
      * @internal
      */
-    public static function load(AbstractTypeObject $resource)
+    public static function load(AbstractTypeObject $resource): void
     {
         /** @todo implementation */
     }

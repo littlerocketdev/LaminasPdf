@@ -22,8 +22,8 @@ use LaminasPdf\InternalType;
  */
 class Jpeg extends AbstractImage
 {
-    protected $_width;
-    protected $_height;
+    protected int $_width;
+    protected int $_height;
     protected $_imageProperties;
 
     /**

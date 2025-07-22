@@ -32,7 +32,7 @@ class TrueType extends AbstractOpenType
      *
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function screen()
+    public function screen(): void
     {
         if ($this->_isScreened) {
             return;
@@ -58,7 +58,7 @@ class TrueType extends AbstractOpenType
     /**
      * Reads and parses the TrueType font data from the file on disk.
      */
-    public function parse()
+    public function parse(): void
     {
         if ($this->_isParsed) {
             return;

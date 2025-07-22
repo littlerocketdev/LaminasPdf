@@ -24,26 +24,20 @@ class Rgb implements ColorInterface
     /**
      * Red level.
      * 0.0 (zero concentration) - 1.0 (maximum concentration)
-     *
-     * @var \LaminasPdf\InternalType\NumericObject
      */
-    private $_r;
+    private \LaminasPdf\InternalType\NumericObject $_r;
 
     /**
      * Green level.
      * 0.0 (zero concentration) - 1.0 (maximum concentration)
-     *
-     * @var \LaminasPdf\InternalType\NumericObject
      */
-    private $_g;
+    private \LaminasPdf\InternalType\NumericObject $_g;
 
     /**
      * Blue level.
      * 0.0 (zero concentration) - 1.0 (maximum concentration)
-     *
-     * @var \LaminasPdf\InternalType\NumericObject
      */
-    private $_b;
+    private \LaminasPdf\InternalType\NumericObject $_b;
 
 
     /**
@@ -90,7 +84,7 @@ class Rgb implements ColorInterface
      * @param boolean $stroking
      * @return string
      */
-    public function instructions($stroking)
+    public function instructions($stroking): string
     {
         return $this->_r->toString() . ' '
             . $this->_g->toString() . ' '
@@ -102,7 +96,7 @@ class Rgb implements ColorInterface
      *
      * @return array
      */
-    public function getComponents()
+    public function getComponents(): array
     {
         return [$this->_r->value, $this->_g->value, $this->_b->value];
     }

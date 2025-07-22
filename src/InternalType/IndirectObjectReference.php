@@ -33,24 +33,18 @@ class IndirectObjectReference extends AbstractTypeObject
 
     /**
      * Object number within PDF file
-     *
-     * @var integer
      */
-    private $_objNum;
+    private int $_objNum;
 
     /**
      * Generation number
-     *
-     * @var integer
      */
-    private $_genNum;
+    private int $_genNum;
 
     /**
      * Reference context
-     *
-     * @var \LaminasPdf\InternalType\IndirectObjectReference\Context
      */
-    private $_context;
+    private \LaminasPdf\InternalType\IndirectObjectReference\Context $_context;
 
 
     /**
@@ -60,10 +54,8 @@ class IndirectObjectReference extends AbstractTypeObject
      * unnecessary dereferencing, whech can produce cascade dereferencing and parsing.
      * The same for duplication of getFactory() function. It can be processed by __call()
      * method, but we catch it here.
-     *
-     * @var \LaminasPdf\ObjectFactory
      */
-    private $_factory;
+    private \LaminasPdf\ObjectFactory $_factory;
 
     /**
      * Object constructor:
@@ -126,7 +118,7 @@ class IndirectObjectReference extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         if ($factory === null) {
             $shift = 0;
@@ -147,7 +139,7 @@ class IndirectObjectReference extends AbstractTypeObject
      *
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _dereference()
+    private function _dereference(): void
     {
         if (($obj = $this->_factory->fetchObject($this->_objNum . ' ' . $this->_genNum)) === null) {
             $obj = $this->_context->getParser()->getObject(
@@ -197,7 +189,7 @@ class IndirectObjectReference extends AbstractTypeObject
     /**
      * Mark object as modified, to include it into new PDF file segment.
      */
-    public function touch()
+    public function touch(): void
     {
         if ($this->_ref === null) {
             $this->_dereference();
@@ -269,7 +261,7 @@ class IndirectObjectReference extends AbstractTypeObject
     /**
      * Clean up resources
      */
-    public function cleanUp()
+    public function cleanUp(): void
     {
         $this->_ref = null;
     }

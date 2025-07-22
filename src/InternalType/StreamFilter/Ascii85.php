@@ -29,7 +29,7 @@ class Ascii85 implements StreamFilterInterface
      * @return string
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function encode($data, $params = null)
+    public static function encode($data, $params = null): string
     {
         $output = '';
         $dataLength = strlen($data);
@@ -100,7 +100,7 @@ class Ascii85 implements StreamFilterInterface
      * @return string
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function decode($data, $params = null)
+    public static function decode($data, $params = null): string
     {
         $output = '';
 

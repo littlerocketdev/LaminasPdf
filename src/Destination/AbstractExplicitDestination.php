@@ -27,7 +27,7 @@ abstract class AbstractExplicitDestination extends AbstractDestination
      *
      * @var \LaminasPdf\InternalType\ArrayObject
      */
-    protected $_destinationArray;
+    protected \LaminasPdf\InternalType\AbstractTypeObject $_destinationArray;
 
     /**
      * True if it's a remote destination

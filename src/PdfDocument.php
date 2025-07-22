@@ -180,7 +180,7 @@ class PdfDocument
      *
      * @param Memory\MemoryManager $memoryManager
      */
-    public static function setMemoryManager(Memory\MemoryManager $memoryManager)
+    public static function setMemoryManager(Memory\MemoryManager $memoryManager): void
     {
         self::$_memoryManager = $memoryManager;
     }
@@ -193,7 +193,7 @@ class PdfDocument
      * @param integer $revision
      * @return \LaminasPdf\PdfDocument
      */
-    public static function parse(&$source = null, $revision = null)
+    public static function parse(&$source = null, $revision = null): self
     {
         return new self($source, $revision);
     }
@@ -205,7 +205,7 @@ class PdfDocument
      * @param integer $revision
      * @return \LaminasPdf\PdfDocument
      */
-    public static function load($source = null, $revision = null)
+    public static function load($source = null, $revision = null): self
     {
         return new self($source, $revision, true);
     }
@@ -219,7 +219,7 @@ class PdfDocument
      * @param boolean $updateOnly
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function save($filename, $updateOnly = false)
+    public function save($filename, $updateOnly = false): void
     {
         if (($file = @fopen($filename, $updateOnly ? 'ab' : 'wb')) === false) {
             throw new Exception\IOException("Can not open '$filename' file for writing.");
@@ -338,7 +338,7 @@ class PdfDocument
      *
      * @return integer
      */
-    public function revisions()
+    public function revisions(): int
     {
         $revisions = 1;
         $currentTrailer = $this->_trailer;
@@ -358,7 +358,7 @@ class PdfDocument
      *
      * @param integer $steps
      */
-    public function rollback($steps)
+    public function rollback($steps): void
     {
         for ($count = 0; $count < $steps; $count++) {
             if ($this->_trailer->getPrev() !== null && $this->_trailer->getPrev()->Root !== null) {
@@ -383,7 +383,7 @@ class PdfDocument
      * @param \LaminasPdf\InternalType\IndirectObjectReference $pages
      * @param array|null $attributes
      */
-    protected function _loadPages(InternalType\IndirectObjectReference $pages, $attributes = [])
+    protected function _loadPages(InternalType\IndirectObjectReference $pages, array $attributes = [])
     {
         if ($pages->getType() != InternalType\AbstractTypeObject::TYPE_DICTIONARY) {
             throw new Exception\CorruptedPdfException('Wrong argument');
@@ -717,7 +717,7 @@ class PdfDocument
      * @param mixed $param2
      * @return \LaminasPdf\Page
      */
-    public function newPage($param1, $param2 = null)
+    public function newPage($param1, $param2 = null): \LaminasPdf\Page
     {
         if ($param2 === null) {
             return new Page($param1, $this->_objFactory);
@@ -746,7 +746,7 @@ class PdfDocument
      *
      * @param string $metadata
      */
-    public function setMetadata($metadata)
+    public function setMetadata($metadata): void
     {
         $metadataObject = $this->_objFactory->newStreamObject($metadata);
         $metadataObject->dictionary->Type = new InternalType\NameObject('Metadata');
@@ -790,7 +790,7 @@ class PdfDocument
      * @param \LaminasPdf\InternalStructure\NavigationTarget $openAction
      * @returns LaminasPdf
      */
-    public function setOpenAction(InternalStructure\NavigationTarget $openAction = null)
+    public function setOpenAction(InternalStructure\NavigationTarget $openAction = null): static
     {
         $root = $this->_trailer->Root;
         $root->touch();
@@ -841,7 +841,7 @@ class PdfDocument
      * @param string $name
      * @param \LaminasPdf\Destination\AbstractExplicitDestination|\LaminasPdf\Action\GoToAction $target
      */
-    public function setNamedDestination($name, $destination = null)
+    public function setNamedDestination($name, $destination = null): void
     {
         if (
             $destination !== null &&
@@ -879,7 +879,7 @@ class PdfDocument
      *
      * @return \LaminasPdf\PdfDocument
      */
-    protected function _refreshPagesHash()
+    protected function _refreshPagesHash(): static
     {
         $this->_pageReferences = [];
         $this->_pageNumbers = [];
@@ -1005,7 +1005,7 @@ class PdfDocument
      * @return array
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function extractFonts()
+    public function extractFonts(): array
     {
         $fontResourcesUnique = [];
         foreach ($this->pages as $page) {
@@ -1057,7 +1057,7 @@ class PdfDocument
      * @return \LaminasPdf\Resource\Font\Extracted|null
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function extractFont($fontName)
+    public function extractFont($fontName): ?\LaminasPdf\Resource\Font\Extracted
     {
         $fontResourcesUnique = [];
         foreach ($this->pages as $page) {
@@ -1313,7 +1313,7 @@ class PdfDocument
      *
      * @param string $javascript
      */
-    public function setJavaScript($javascript)
+    public function setJavaScript($javascript): void
     {
         $this->_javaScript = $javascript;
     }

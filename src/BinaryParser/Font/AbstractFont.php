@@ -38,9 +38,8 @@ abstract class AbstractFont extends BinaryParser\AbstractBinaryParser
 
     /**
      * Flag indicating whether or not debug logging is active.
-     * @var boolean
      */
-    private $_debug = false;
+    private bool $_debug = false;
 
 
     /**** Public Interface ****/
@@ -142,7 +141,7 @@ abstract class AbstractFont extends BinaryParser\AbstractBinaryParser
     /**
      * Writes the entire font properties array to STDOUT. Used only for debugging.
      */
-    public function writeDebug()
+    public function writeDebug(): void
     {
         print_r($this->_fontProperties);
     }

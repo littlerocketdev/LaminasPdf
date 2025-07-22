@@ -100,7 +100,7 @@ class Style
      *
      * @param \LaminasPdf\Color\ColorInterface $color
      */
-    public function setFillColor(Color\ColorInterface $color)
+    public function setFillColor(Color\ColorInterface $color): void
     {
         $this->_fillColor = $color;
     }
@@ -110,7 +110,7 @@ class Style
      *
      * @param \LaminasPdf\Color\ColorInterface $color
      */
-    public function setLineColor(Color\ColorInterface $color)
+    public function setLineColor(Color\ColorInterface $color): void
     {
         $this->_color = $color;
     }
@@ -120,7 +120,7 @@ class Style
      *
      * @param float $width
      */
-    public function setLineWidth($width)
+    public function setLineWidth($width): void
     {
         $this->_lineWidth = new InternalType\NumericObject($width);
     }
@@ -132,7 +132,7 @@ class Style
      * @param array $pattern
      * @param float $phase
      */
-    public function setLineDashingPattern($pattern, $phase = 0)
+    public function setLineDashingPattern($pattern, $phase = 0): void
     {
         if ($pattern === Page::LINE_DASHING_SOLID) {
             $pattern = [];
@@ -150,7 +150,7 @@ class Style
      * @param \LaminasPdf\Resource\Font\AbstractFont $font
      * @param float $fontSize
      */
-    public function setFont(Resource\Font\AbstractFont $font, $fontSize)
+    public function setFont(Resource\Font\AbstractFont $font, $fontSize): void
     {
         $this->_font = $font;
         $this->_fontSize = $fontSize;
@@ -161,7 +161,7 @@ class Style
      *
      * @param float $fontSize
      */
-    public function setFontSize($fontSize)
+    public function setFontSize($fontSize): void
     {
         $this->_fontSize = $fontSize;
     }
@@ -243,7 +243,7 @@ class Style
      *
      * @return string
      */
-    public function instructions()
+    public function instructions(): string
     {
         $instructions = '';
 

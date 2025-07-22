@@ -98,7 +98,7 @@ class Html implements ColorInterface
      *    blue, etc.)
      * @return ColorInterface
      */
-    public static function namedColor($color)
+    public static function namedColor(string $color): \LaminasPdf\Color\GrayScale|\LaminasPdf\Color\Rgb
     {
         switch (strtolower($color)) {
             case 'aqua':

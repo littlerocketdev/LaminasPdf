@@ -28,10 +28,8 @@ class StreamObject extends IndirectObject
      * StreamObject dictionary
      * Required enries:
      * Length
-     *
-     * @var \LaminasPdf\InternalType\DictionaryObject
      */
-    private $_dictionary;
+    private \LaminasPdf\InternalType\DictionaryObject $_dictionary;
 
     /**
      * Flag which signals, that stream is decoded
@@ -81,7 +79,7 @@ class StreamObject extends IndirectObject
      *
      * @return array
      */
-    private function _extractDictionaryData()
+    private function _extractDictionaryData(): array
     {
         $dictionaryArray = [];
 
@@ -161,7 +159,7 @@ class StreamObject extends IndirectObject
      *
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _decodeStream()
+    private function _decodeStream(): void
     {
         if ($this->_initialDictionaryData === null) {
             $this->_initialDictionaryData = $this->_extractDictionaryData();
@@ -219,7 +217,7 @@ class StreamObject extends IndirectObject
      *
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _encodeStream()
+    private function _encodeStream(): void
     {
         /**
          * All applied stream filters must be processed to encode stream.
@@ -327,7 +325,7 @@ class StreamObject extends IndirectObject
     /**
      * Treat stream data as already encoded
      */
-    public function skipFilters()
+    public function skipFilters(): void
     {
         $this->_streamDecoded = false;
     }
@@ -389,7 +387,7 @@ class StreamObject extends IndirectObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function dump(ObjectFactory $factory)
+    public function dump(ObjectFactory $factory): string
     {
         $shift = $factory->getEnumerationShift($this->_factory);
 
@@ -418,7 +416,7 @@ class StreamObject extends IndirectObject
     /**
      * Clean up resources, used by object
      */
-    public function cleanUp()
+    public function cleanUp(): void
     {
         $this->_dictionary = null;
         $this->_value = null;

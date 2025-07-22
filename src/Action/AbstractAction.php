@@ -35,7 +35,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *      | \LaminasPdf\InternalType\IndirectObject
      *      | \LaminasPdf\InternalType\IndirectObjectReference
      */
-    protected $_actionDictionary;
+    protected \LaminasPdf\InternalType\AbstractTypeObject $_actionDictionary;
 
 
     /**

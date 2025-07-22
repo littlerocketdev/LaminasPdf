@@ -47,10 +47,8 @@ class IndirectObject extends AbstractTypeObject
 
     /**
      * Reference to the factory.
-     *
-     * @var \LaminasPdf\ObjectFactory
      */
-    protected $_factory;
+    protected \LaminasPdf\ObjectFactory $_factory;
 
     /**
      * Object constructor
@@ -139,7 +137,7 @@ class IndirectObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         if ($factory === null) {
             $shift = 0;
@@ -159,7 +157,7 @@ class IndirectObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function dump(ObjectFactory $factory)
+    public function dump(ObjectFactory $factory): string
     {
         $shift = $factory->getEnumerationShift($this->_factory);
 
@@ -240,7 +238,7 @@ class IndirectObject extends AbstractTypeObject
     /**
      * Mark object as modified, to include it into new PDF file segment
      */
-    public function touch()
+    public function touch(): void
     {
         $this->_factory->markAsModified($this);
     }
@@ -250,7 +248,7 @@ class IndirectObject extends AbstractTypeObject
      *
      * @return \LaminasPdf\InternalType\IndirectObject
      */
-    public function getObject()
+    public function getObject(): static
     {
         return $this;
     }
@@ -258,7 +256,7 @@ class IndirectObject extends AbstractTypeObject
     /**
      * Clean up resources, used by object
      */
-    public function cleanUp()
+    public function cleanUp(): void
     {
         $this->_value = null;
     }

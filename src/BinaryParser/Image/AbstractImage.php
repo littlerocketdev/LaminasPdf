@@ -23,10 +23,8 @@ abstract class AbstractImage extends BinaryParser\AbstractBinaryParser
 {
     /**
      * Image Type
-     *
-     * @var integer
      */
-    protected $imageType;
+    protected int $imageType;
 
     /**
      * Object constructor.

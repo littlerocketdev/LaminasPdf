@@ -38,7 +38,7 @@ class FitBoundingBox extends AbstractExplicitDestination
      * @return \LaminasPdf\Destination\FitBoundingBox
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function create($page)
+    public static function create($page): self
     {
         $destinationArray = new InternalType\ArrayObject();
 

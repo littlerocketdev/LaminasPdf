@@ -51,7 +51,7 @@ class Lzw extends AbstractCompression
      * @return string
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function encode($data, $params = null)
+    public static function encode($data, $params = null): void
     {
         if ($params != null) {
             $data = self::_applyEncodeParams($data, $params);

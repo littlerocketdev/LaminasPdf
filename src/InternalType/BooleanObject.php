@@ -52,7 +52,7 @@ class BooleanObject extends AbstractTypeObject
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return AbstractTypeObject::TYPE_BOOL;
     }
@@ -64,7 +64,7 @@ class BooleanObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         return $this->value ? 'true' : 'false';
     }

@@ -101,7 +101,7 @@ class SegmentToDelta extends AbstractCmap
      * @param array $characterCodes Array of Unicode character codes (code points).
      * @return array Array of glyph numbers.
      */
-    public function glyphNumbersForCharacters($characterCodes)
+    public function glyphNumbersForCharacters($characterCodes): array
     {
         $glyphNumbers = [];
         foreach ($characterCodes as $key => $characterCode) {
@@ -233,7 +233,7 @@ class SegmentToDelta extends AbstractCmap
      *
      * @return array Unicode character codes.
      */
-    public function getCoveredCharacters()
+    public function getCoveredCharacters(): array
     {
         $characterCodes = [];
         for ($i = 1; $i <= $this->_segmentCount; $i++) {
@@ -256,7 +256,7 @@ class SegmentToDelta extends AbstractCmap
      * @return array Array representing <Unicode character code> => <glyph number> pairs.
      * @internal
      */
-    public function getCoveredCharactersGlyphs()
+    public function getCoveredCharactersGlyphs(): array
     {
         $glyphNumbers = [];
 

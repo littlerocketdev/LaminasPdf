@@ -138,7 +138,7 @@ abstract class AbstractFont extends Resource\AbstractResource
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getFontName(Pdf\Font::NAME_FULL, '', '//TRANSLIT');
     }

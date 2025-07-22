@@ -82,7 +82,7 @@ abstract class AbstractCompression implements Pdf\InternalType\StreamFilter\Stre
      * @return integer
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private static function _getColorsValue(&$params)
+    private static function _getColorsValue(array &$params)
     {
         if (isset($params['Colors'])) {
             $colors = $params['Colors'];
@@ -103,7 +103,7 @@ abstract class AbstractCompression implements Pdf\InternalType\StreamFilter\Stre
      * @return integer
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private static function _getBitsPerComponentValue(&$params)
+    private static function _getBitsPerComponentValue(array &$params)
     {
         if (isset($params['BitsPerComponent'])) {
             $bitsPerComponent = $params['BitsPerComponent'];
@@ -127,7 +127,7 @@ abstract class AbstractCompression implements Pdf\InternalType\StreamFilter\Stre
      * @param array $params
      * @return integer
      */
-    private static function _getColumnsValue(&$params)
+    private static function _getColumnsValue(array &$params)
     {
         if (isset($params['Columns'])) {
             return $params['Columns'];

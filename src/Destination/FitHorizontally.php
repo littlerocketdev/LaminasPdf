@@ -37,7 +37,7 @@ class FitHorizontally extends AbstractExplicitDestination
      * @return \LaminasPdf\Destination\FitHorizontally
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function create($page, $top)
+    public static function create($page, $top): self
     {
         $destinationArray = new InternalType\ArrayObject();
 
@@ -71,7 +71,7 @@ class FitHorizontally extends AbstractExplicitDestination
      * @param float $top
      * @return FitHorizontally
      */
-    public function setTopEdge($top)
+    public function setTopEdge($top): static
     {
         $this->_destinationArray->items[2] = new InternalType\NumericObject($top);
 

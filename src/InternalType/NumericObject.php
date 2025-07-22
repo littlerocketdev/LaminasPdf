@@ -52,7 +52,7 @@ class NumericObject extends AbstractTypeObject
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return AbstractTypeObject::TYPE_NUMERIC;
     }
@@ -64,7 +64,7 @@ class NumericObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         if (is_integer($this->value)) {
             return (string)$this->value;

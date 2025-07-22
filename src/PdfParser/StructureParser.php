@@ -27,10 +27,8 @@ class StructureParser
 {
     /**
      * String parser
-     *
-     * @var \LaminasPdf\PdfParser\DataParser
      */
-    private $_stringParser;
+    private ?\LaminasPdf\PdfParser\DataParser $_stringParser = null;
 
     /**
      * Last PDF file trailer
@@ -41,10 +39,8 @@ class StructureParser
 
     /**
      * PDF version specified in the file header
-     *
-     * @var string
      */
-    private $_pdfVersion;
+    private string $_pdfVersion;
 
 
     /**
@@ -52,7 +48,7 @@ class StructureParser
      *
      * @return integer
      */
-    public function getPDFLength()
+    public function getPDFLength(): int
     {
         return strlen($this->_stringParser->data);
     }
@@ -84,7 +80,7 @@ class StructureParser
      * @return \LaminasPdf\Trailer\Parsed
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _loadXRefTable($offset)
+    private function _loadXRefTable($offset): \LaminasPdf\Trailer\Parsed
     {
         $this->_stringParser->offset = $offset;
 

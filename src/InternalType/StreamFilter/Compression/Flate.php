@@ -29,7 +29,7 @@ class Flate extends AbstractCompression
      * @return string
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function encode($data, $params = null)
+    public static function encode($data, $params = null): string
     {
         global $php_errormsg;
 

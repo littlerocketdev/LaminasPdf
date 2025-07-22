@@ -25,17 +25,13 @@ class Context
 {
     /**
      * PDF parser object.
-     *
-     * @var \LaminasPdf\PdfParser\DataParser
      */
-    private $_stringParser;
+    private \LaminasPdf\PdfParser\DataParser $_stringParser;
 
     /**
      * Reference table
-     *
-     * @var \LaminasPdf\InternalType\IndirectObjectReference\ReferenceTable
      */
-    private $_refTable;
+    private \LaminasPdf\InternalType\IndirectObjectReference\ReferenceTable $_refTable;
 
     /**
      * Object constructor

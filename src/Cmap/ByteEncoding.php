@@ -55,7 +55,7 @@ class ByteEncoding extends AbstractCmap
      * @param array $characterCodes Array of Unicode character codes (code points).
      * @return array Array of glyph numbers.
      */
-    public function glyphNumbersForCharacters($characterCodes)
+    public function glyphNumbersForCharacters($characterCodes): array
     {
         $glyphNumbers = [];
         foreach ($characterCodes as $key => $characterCode) {

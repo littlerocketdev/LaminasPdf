@@ -61,7 +61,7 @@ class Link extends AbstractAnnotation
      * @param \LaminasPdf\InternalStructure\NavigationTarget|string $target
      * @return \LaminasPdf\Annotation\Link
      */
-    public static function create($x1, $y1, $x2, $y2, $target)
+    public static function create($x1, $y1, $x2, $y2, $target): self
     {
         if (is_string($target)) {
             $destination = Destination\Named::create($target);
@@ -97,7 +97,7 @@ class Link extends AbstractAnnotation
      * @param \LaminasPdf\InternalStructure\NavigationTarget|string $target
      * @return \LaminasPdf\Annotation\Link
      */
-    public function setDestination($target)
+    public function setDestination($target): static
     {
         $destination = null;
         if (is_string($target)) {

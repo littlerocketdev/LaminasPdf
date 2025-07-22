@@ -45,7 +45,7 @@ class StringObject extends AbstractTypeObject
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return AbstractTypeObject::TYPE_STRING;
     }
@@ -57,7 +57,7 @@ class StringObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         return '(' . self::escape((string)$this->value) . ')';
     }
@@ -69,7 +69,7 @@ class StringObject extends AbstractTypeObject
      * @param string $str
      * @return string
      */
-    public static function escape($str)
+    public static function escape($str): string
     {
         $outEntries = [];
 
@@ -154,7 +154,7 @@ class StringObject extends AbstractTypeObject
      * @param string $str
      * @return string
      */
-    public static function unescape($str)
+    public static function unescape($str): string
     {
         $outEntries = [];
 

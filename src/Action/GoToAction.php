@@ -51,7 +51,7 @@ class GoToAction extends AbstractAction
      * @param \LaminasPdf\Destination\AbstractDestination|string $destination
      * @return \LaminasPdf\Action\GoToAction
      */
-    public static function create($destination)
+    public static function create($destination): self
     {
         if (is_string($destination)) {
             $destination = Destination\Named::create($destination);
@@ -76,7 +76,7 @@ class GoToAction extends AbstractAction
      * @param \LaminasPdf\Destination\AbstractDestination|string $destination
      * @return \LaminasPdf\Action\GoToAction
      */
-    public function setDestination(Destination\AbstractDestination $destination)
+    public function setDestination(Destination\AbstractDestination $destination): static
     {
         $this->_destination = $destination;
 

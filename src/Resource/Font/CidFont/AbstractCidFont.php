@@ -47,10 +47,8 @@ abstract class AbstractCidFont extends FontResource\AbstractFont
 
     /**
      * Array containing the widths of each character that have entries in used character map.
-     *
-     * @var array
      */
-    protected $_charWidths = null;
+    protected array $_charWidths;
 
     /**
      * Width for characters missed in the font

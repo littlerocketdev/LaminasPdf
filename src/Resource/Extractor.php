@@ -38,10 +38,8 @@ class Extractor
 
     /**
      * Reusable list of already processed objects
-     *
-     * @var array
      */
-    protected $_processed;
+    protected array $_processed;
 
     /**
      * Object constructor.

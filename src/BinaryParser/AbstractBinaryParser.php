@@ -160,7 +160,7 @@ abstract class AbstractBinaryParser
      * @param integer $offset Destination byte offset.
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function moveToOffset($offset)
+    public function moveToOffset($offset): void
     {
         $this->_dataSource->moveToOffset($offset);
     }
@@ -193,7 +193,7 @@ abstract class AbstractBinaryParser
      * @param integer $byteCount Number of bytes to skip.
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function skipBytes($byteCount)
+    public function skipBytes($byteCount): void
     {
         $this->_dataSource->skipBytes($byteCount);
     }

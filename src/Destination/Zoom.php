@@ -41,7 +41,7 @@ class Zoom extends AbstractExplicitDestination
      * @return \LaminasPdf\Destination\Zoom
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function create($page, $left = null, $top = null, $zoom = null)
+    public static function create($page, $left = null, $top = null, $zoom = null): self
     {
         $destinationArray = new InternalType\ArrayObject();
 
@@ -92,7 +92,7 @@ class Zoom extends AbstractExplicitDestination
      * @param float $left
      * @return \LaminasPdf\Action\Zoom
      */
-    public function setLeftEdge($left)
+    public function setLeftEdge($left): static
     {
         if ($left === null) {
             $this->_destinationArray->items[2] = new InternalType\NullObject();
@@ -119,7 +119,7 @@ class Zoom extends AbstractExplicitDestination
      * @param float $top
      * @return \LaminasPdf\Action\Zoom
      */
-    public function setTopEdge($top)
+    public function setTopEdge($top): static
     {
         if ($top === null) {
             $this->_destinationArray->items[3] = new InternalType\NullObject();
@@ -146,7 +146,7 @@ class Zoom extends AbstractExplicitDestination
      * @param float $zoom
      * @return \LaminasPdf\Action\Zoom
      */
-    public function setZoomFactor($zoom)
+    public function setZoomFactor($zoom): static
     {
         if ($zoom === null) {
             $this->_destinationArray->items[4] = new InternalType\NullObject();

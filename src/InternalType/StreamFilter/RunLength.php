@@ -26,7 +26,7 @@ class RunLength implements StreamFilterInterface
      * @param array $params
      * @return string
      */
-    public static function encode($data, $params = null)
+    public static function encode($data, $params = null): string
     {
         $output = '';
 
@@ -77,7 +77,7 @@ class RunLength implements StreamFilterInterface
      * @param array $params
      * @return string
      */
-    public static function decode($data, $params = null)
+    public static function decode($data, $params = null): string
     {
         $dataLength = strlen($data);
         $output = '';

@@ -40,10 +40,8 @@ class DataParser
 
     /**
      * Current reference context
-     *
-     * @var \LaminasPdf\InternalType\IndirectObjectReference\Context
      */
-    private $_context = null;
+    private ?\LaminasPdf\InternalType\IndirectObjectReference\Context $_context = null;
 
     /**
      * Array of elements of the currently parsed object/trailer
@@ -54,10 +52,8 @@ class DataParser
 
     /**
      * PDF objects factory.
-     *
-     * @var \LaminasPdf\ObjectFactory
      */
-    private $_objFactory = null;
+    private ?\LaminasPdf\ObjectFactory $_objFactory = null;
 
 
     /**
@@ -65,7 +61,7 @@ class DataParser
      *
      * Clear current state to remove cyclic object references
      */
-    public function cleanUp()
+    public function cleanUp(): void
     {
         $this->_context = null;
         $this->_elements = [];
@@ -78,7 +74,7 @@ class DataParser
      * @param integer $chCode
      * @return boolean
      */
-    public static function isWhiteSpace($chCode)
+    public static function isWhiteSpace($chCode): bool
     {
         if (
             $chCode == 0x00 || // null character
@@ -101,7 +97,7 @@ class DataParser
      * @param integer $chCode
      * @return boolean
      */
-    public static function isDelimiter($chCode)
+    public static function isDelimiter($chCode): bool
     {
         if (
             $chCode == 0x28 || // '('
@@ -127,7 +123,7 @@ class DataParser
      *
      * @param boolean $skipComment
      */
-    public function skipWhiteSpace($skipComment = true)
+    public function skipWhiteSpace($skipComment = true): void
     {
         if ($skipComment) {
             while (true) {
@@ -162,7 +158,7 @@ class DataParser
     /**
      * Skip comment
      */
-    public function skipComment()
+    public function skipComment(): void
     {
         while ($this->offset < strlen($this->data)) {
             if (
@@ -182,7 +178,7 @@ class DataParser
      *
      * @return string
      */
-    public function readComment()
+    public function readComment(): string
     {
         $this->skipWhiteSpace(false);
 
@@ -335,7 +331,7 @@ class DataParser
      * @return \LaminasPdf\InternalType\StringObject
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _readString()
+    private function _readString(): \LaminasPdf\InternalType\StringObject
     {
         $start = $this->offset;
         $openedBrackets = 1;
@@ -383,7 +379,7 @@ class DataParser
      * @return \LaminasPdf\InternalType\BinaryStringObject
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _readBinaryString()
+    private function _readBinaryString(): \LaminasPdf\InternalType\BinaryStringObject
     {
         $start = $this->offset;
 
@@ -414,7 +410,7 @@ class DataParser
      * @return \LaminasPdf\InternalType\ArrayObject
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _readArray()
+    private function _readArray(): \LaminasPdf\InternalType\ArrayObject
     {
         $elements = [];
 
@@ -437,7 +433,7 @@ class DataParser
      * @return \LaminasPdf\InternalType\DictionaryObject
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    private function _readDictionary()
+    private function _readDictionary(): \LaminasPdf\InternalType\DictionaryObject
     {
         $dictionary = new InternalType\DictionaryObject();
 
@@ -468,7 +464,7 @@ class DataParser
      * @param string $nextLexeme
      * @return \LaminasPdf\InternalType\IndirectObjectReference
      */
-    private function _readReference($nextLexeme = null)
+    private function _readReference($nextLexeme = null): ?\LaminasPdf\InternalType\IndirectObjectReference
     {
         $start = $this->offset;
 
@@ -506,7 +502,7 @@ class DataParser
      * @param string $nextLexeme
      * @return \LaminasPdf\InternalType\NumericObject
      */
-    private function _readNumeric($nextLexeme = null)
+    private function _readNumeric($nextLexeme = null): \LaminasPdf\InternalType\NumericObject
     {
         if ($nextLexeme === null) {
             $nextLexeme = $this->readLexeme();
@@ -523,7 +519,7 @@ class DataParser
      * @param \LaminasPdf\InternalType\IndirectObjectReference\Context $context
      * @return \LaminasPdf\InternalType\IndirectObject
      */
-    public function getObject($offset, IndirectObjectReference\Context $context)
+    public function getObject($offset, IndirectObjectReference\Context $context): \LaminasPdf\InternalType\NullObject|\LaminasPdf\InternalType\IndirectObject|\LaminasPdf\InternalType\StreamObject
     {
         if ($offset === null) {
             return new InternalType\NullObject();
@@ -645,7 +641,7 @@ class DataParser
      *
      * @return integer
      */
-    public function getLength()
+    public function getLength(): int
     {
         return strlen($this->data);
     }
@@ -669,7 +665,7 @@ class DataParser
      * @param integer $size
      * @return integer
      */
-    public static function parseIntFromStream($stream, $offset, $size)
+    public static function parseIntFromStream($stream, $offset, $size): int
     {
         $value = 0;
         for ($count = 0; $count < $size; $count++) {
@@ -686,7 +682,7 @@ class DataParser
      *
      * @param \LaminasPdf\InternalType\IndirectObjectReference\Context $context
      */
-    public function setContext(IndirectObjectReference\Context $context)
+    public function setContext(IndirectObjectReference\Context $context): void
     {
         $this->_context = $context;
     }

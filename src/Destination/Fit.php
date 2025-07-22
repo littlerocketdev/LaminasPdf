@@ -38,7 +38,7 @@ class Fit extends AbstractExplicitDestination
      * @return \LaminasPdf\Destination\Fit
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function create($page)
+    public static function create($page): self
     {
         $destinationArray = new InternalType\ArrayObject();
 

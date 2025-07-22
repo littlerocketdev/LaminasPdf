@@ -25,7 +25,7 @@ class NullObject extends AbstractTypeObject
     /**
      * Object value. Always null.
      *
-     * @var mixed
+     * @var null
      */
     public $value;
 
@@ -44,7 +44,7 @@ class NullObject extends AbstractTypeObject
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return AbstractTypeObject::TYPE_NULL;
     }
@@ -56,7 +56,7 @@ class NullObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         return 'null';
     }

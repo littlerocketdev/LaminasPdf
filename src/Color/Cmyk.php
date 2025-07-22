@@ -25,34 +25,26 @@ class Cmyk implements ColorInterface
     /**
      * Cyan level.
      * 0.0 (zero concentration) - 1.0 (maximum concentration)
-     *
-     * @var \LaminasPdf\InternalType\NumericObject
      */
-    private $_c;
+    private \LaminasPdf\InternalType\NumericObject $_c;
 
     /**
      * Magenta level.
      * 0.0 (zero concentration) - 1.0 (maximum concentration)
-     *
-     * @var \LaminasPdf\InternalType\NumericObject
      */
-    private $_m;
+    private \LaminasPdf\InternalType\NumericObject $_m;
 
     /**
      * Yellow level.
      * 0.0 (zero concentration) - 1.0 (maximum concentration)
-     *
-     * @var \LaminasPdf\InternalType\NumericObject
      */
-    private $_y;
+    private \LaminasPdf\InternalType\NumericObject $_y;
 
     /**
      * Key (BlacK) level.
      * 0.0 (zero concentration) - 1.0 (maximum concentration)
-     *
-     * @var \LaminasPdf\InternalType\NumericObject
      */
-    private $_k;
+    private \LaminasPdf\InternalType\NumericObject $_k;
 
 
     /**
@@ -107,7 +99,7 @@ class Cmyk implements ColorInterface
      * @param boolean $stroking
      * @return string
      */
-    public function instructions($stroking)
+    public function instructions($stroking): string
     {
         return $this->_c->toString() . ' '
             . $this->_m->toString() . ' '
@@ -120,7 +112,7 @@ class Cmyk implements ColorInterface
      *
      * @return array
      */
-    public function getComponents()
+    public function getComponents(): array
     {
         return [$this->_c->value, $this->_m->value, $this->_y->value, $this->_k->value];
     }

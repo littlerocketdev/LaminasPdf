@@ -101,7 +101,7 @@ class NameTree implements ArrayAccess, Countable, Iterator
     }
 
 
-    public function rewind()
+    public function rewind(): void
     {
         reset($this->_items);
     }
@@ -119,7 +119,7 @@ class NameTree implements ArrayAccess, Countable, Iterator
     }
 
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if ($offset === null) {
             $this->_items[] = $value;
@@ -129,13 +129,13 @@ class NameTree implements ArrayAccess, Countable, Iterator
     }
 
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->_items[$offset]);
     }
 
 
-    public function clear()
+    public function clear(): void
     {
         $this->_items = [];
     }

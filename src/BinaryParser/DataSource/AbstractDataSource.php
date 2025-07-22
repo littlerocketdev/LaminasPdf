@@ -101,7 +101,7 @@ abstract class AbstractDataSource
      *
      * @return String_
      */
-    public function __toString()
+    public function __toString(): string
     {
         return static::class;
     }
@@ -146,7 +146,7 @@ abstract class AbstractDataSource
      * @param integer $offset Destination byte offset.
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function moveToOffset($offset)
+    public function moveToOffset($offset): void
     {
         if ($this->_offset == $offset) {
             return;    // Not moving; do nothing.
@@ -171,7 +171,7 @@ abstract class AbstractDataSource
      * @param integer $byteCount Number of bytes to skip.
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function skipBytes($byteCount)
+    public function skipBytes($byteCount): void
     {
         $this->moveToOffset($this->_offset + $byteCount);
     }

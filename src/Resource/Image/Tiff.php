@@ -59,7 +59,7 @@ class Tiff extends AbstractImage
     protected $_height;
     protected $_imageProperties;
     protected $_endianType;
-    protected $_fileSize;
+    protected int $_fileSize;
     protected $_bitsPerSample;
     protected $_compression;
     protected $_filter;

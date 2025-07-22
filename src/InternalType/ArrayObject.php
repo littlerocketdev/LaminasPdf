@@ -62,7 +62,7 @@ class ArrayObject extends AbstractTypeObject
      * @param string $property
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function __get($property)
+    public function __get(string $property)
     {
         throw new Exception\RuntimeException('Undefined property: \LaminasPdf\InternalType\ArrayObject::$' . $property);
     }
@@ -75,7 +75,7 @@ class ArrayObject extends AbstractTypeObject
      * @param mixed $value
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function __set($property, $value)
+    public function __set(string $property, $value)
     {
         throw new Exception\RuntimeException('Undefined property: \LaminasPdf\InternalType\ArrayObject::$' . $property);
     }
@@ -85,7 +85,7 @@ class ArrayObject extends AbstractTypeObject
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return AbstractTypeObject::TYPE_ARRAY;
     }
@@ -97,7 +97,7 @@ class ArrayObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         $outStr = '[';
         $lastNL = 0;
@@ -123,7 +123,7 @@ class ArrayObject extends AbstractTypeObject
      * @param integer $mode Cloning mode (defines filter for objects cloning)
      * @returns \LaminasPdf\InternalType\AbstractTypeObject
      */
-    public function makeClone(Pdf\ObjectFactory $factory, array &$processed, $mode)
+    public function makeClone(Pdf\ObjectFactory $factory, array &$processed, $mode): self
     {
         $newArray = new self();
 
@@ -139,7 +139,7 @@ class ArrayObject extends AbstractTypeObject
      *
      * @param \LaminasPdf\InternalType\IndirectObject $parent
      */
-    public function setParentObject(IndirectObject $parent)
+    public function setParentObject(IndirectObject $parent): void
     {
         parent::setParentObject($parent);
 
@@ -153,9 +153,9 @@ class ArrayObject extends AbstractTypeObject
      *
      * Dictionary is returned as an associative array
      *
-     * @return mixed
+     * @return list
      */
-    public function toPhp()
+    public function toPhp(): array
     {
         $phpArray = [];
 

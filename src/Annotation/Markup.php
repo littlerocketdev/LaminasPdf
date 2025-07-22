@@ -90,7 +90,7 @@ class Markup extends AbstractAnnotation
      * @return \LaminasPdf\Annotation\Markup
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function create($x1, $y1, $x2, $y2, $text, $subType, $quadPoints)
+    public static function create($x1, $y1, $x2, $y2, $text, $subType, $quadPoints): self
     {
         $annotationDictionary = new InternalType\DictionaryObject();
 

@@ -25,17 +25,13 @@ class Parsed extends AbstractTrailer
 {
     /**
      * Reference context
-     *
-     * @var \LaminasPdf\InternalType\IndirectObjectReference\Context
      */
-    private $_context;
+    private \LaminasPdf\InternalType\IndirectObjectReference\Context $_context;
 
     /**
      * Previous trailer
-     *
-     * @var \LaminasPdf\Trailer\AbstractTrailer
      */
-    private $_prev;
+    private ?\LaminasPdf\Trailer\AbstractTrailer $_prev;
 
 
     /**
@@ -61,7 +57,7 @@ class Parsed extends AbstractTrailer
      *
      * @param \LaminasPdf\Trailer\Parsed $prev
      */
-    public function setPrev(Parsed $prev)
+    public function setPrev(Parsed $prev): void
     {
         $this->_prev = $prev;
     }

@@ -63,7 +63,7 @@ class FontDescriptor
         AbstractFont $font,
         OpenTypeFontParser\AbstractOpenType $fontParser,
         $embeddingOptions
-    ) {
+    ): \LaminasPdf\InternalType\DictionaryObject {
         /* The font descriptor object contains the rest of the font metrics and
          * the information about the embedded font program (if applicible).
          */

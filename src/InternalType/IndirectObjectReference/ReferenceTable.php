@@ -24,42 +24,32 @@ class ReferenceTable
 {
     /**
      * Parent reference table
-     *
-     * @var \LaminasPdf\InternalType\IndirectObjectReference\ReferenceTable
      */
-    private $_parent;
+    private ?\LaminasPdf\InternalType\IndirectObjectReference\ReferenceTable $_parent = null;
 
     /**
      * Free entries
      * 'reference' => next free object number
-     *
-     * @var array
      */
-    private $_free;
+    private array $_free;
 
     /**
      * Generation numbers for free objects.
      * Array: objNum => nextGeneration
-     *
-     * @var array
      */
-    private $_generations;
+    private array $_generations;
 
     /**
      * In use entries
      * 'reference' => offset
-     *
-     * @var array
      */
-    private $_inuse;
+    private array $_inuse;
 
     /**
      * Generation numbers for free objects.
      * Array: objNum => objGeneration
-     *
-     * @var array
      */
-    private $_usedObjects;
+    private array $_usedObjects;
 
 
     /**
@@ -82,7 +72,7 @@ class ReferenceTable
      * @param integer $offset
      * @param boolean $inuse
      */
-    public function addReference($ref, $offset, $inuse = true)
+    public function addReference($ref, $offset, $inuse = true): void
     {
         $refElements = explode(' ', $ref);
         if (!is_numeric($refElements[0]) || !is_numeric($refElements[1]) || $refElements[2] != 'R') {
@@ -106,7 +96,7 @@ class ReferenceTable
      *
      * @param \LaminasPdf\InternalType\IndirectObjectReference\ReferenceTable $parent
      */
-    public function setParent(self $parent)
+    public function setParent(self $parent): void
     {
         $this->_parent = $parent;
     }

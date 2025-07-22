@@ -52,7 +52,7 @@ class NameObject extends AbstractTypeObject
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return AbstractTypeObject::TYPE_NAME;
     }
@@ -64,7 +64,7 @@ class NameObject extends AbstractTypeObject
      * @param string $inStr
      * @return string
      */
-    public static function escape($inStr)
+    public static function escape($inStr): string
     {
         $outStr = '';
 
@@ -119,7 +119,7 @@ class NameObject extends AbstractTypeObject
      * @param string $inStr
      * @return string
      */
-    public static function unescape($inStr)
+    public static function unescape($inStr): string
     {
         $outStr = '';
 
@@ -143,7 +143,7 @@ class NameObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         return '/' . self::escape((string)$this->value);
     }

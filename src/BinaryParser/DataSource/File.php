@@ -103,7 +103,7 @@ class File extends AbstractDataSource
      * @return String_
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function readBytes($byteCount)
+    public function readBytes($byteCount): string
     {
         $bytes = @fread($this->_fileResource, $byteCount);
         if ($bytes === false) {
@@ -123,7 +123,7 @@ class File extends AbstractDataSource
      *
      * @return String_
      */
-    public function readAllBytes()
+    public function readAllBytes(): string|false
     {
         return file_get_contents($this->_filePath);
     }
@@ -136,7 +136,7 @@ class File extends AbstractDataSource
      *
      * @return String_
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->_filePath;
     }
@@ -153,7 +153,7 @@ class File extends AbstractDataSource
      * @param integer $offset Destination byte offset.
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function moveToOffset($offset)
+    public function moveToOffset($offset): void
     {
         if ($this->_offset == $offset) {
             return;    // Not moving; do nothing.

@@ -72,7 +72,7 @@ class String_ extends AbstractDataSource
      * @return string
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function readBytes($byteCount)
+    public function readBytes($byteCount): string
     {
         if (($this->_offset + $byteCount) > $this->_size) {
             throw new Exception\LengthException("Insufficient data to read $byteCount bytes");
@@ -89,7 +89,7 @@ class String_ extends AbstractDataSource
      *
      * @return string
      */
-    public function readAllBytes()
+    public function readAllBytes(): string
     {
         return $this->_string;
     }

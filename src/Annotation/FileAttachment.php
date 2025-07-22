@@ -55,7 +55,7 @@ class FileAttachment extends AbstractAnnotation
      * @param string $fileSpecification
      * @return \LaminasPdf\Annotation\FileAttachment
      */
-    public static function create($x1, $y1, $x2, $y2, $fileSpecification)
+    public static function create($x1, $y1, $x2, $y2, $fileSpecification): self
     {
         $annotationDictionary = new InternalType\DictionaryObject();
 

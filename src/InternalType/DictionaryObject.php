@@ -65,7 +65,7 @@ class DictionaryObject extends AbstractTypeObject
      * @param \LaminasPdf\InternalType\AbstractTypeObject $val - \LaminasPdf\InternalType\AbstractTypeObject object
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function add(NameObject $name, AbstractTypeObject $val)
+    public function add(NameObject $name, AbstractTypeObject $val): void
     {
         $this->_items[$name->value] = $val;
     }
@@ -114,7 +114,7 @@ class DictionaryObject extends AbstractTypeObject
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return AbstractTypeObject::TYPE_DICTIONARY;
     }
@@ -125,7 +125,7 @@ class DictionaryObject extends AbstractTypeObject
      * @param \LaminasPdf\ObjectFactory $factory
      * @return string
      */
-    public function toString(Pdf\ObjectFactory $factory = null)
+    public function toString(Pdf\ObjectFactory $factory = null): string
     {
         $outStr = '<<';
         $lastNL = 0;
@@ -157,7 +157,7 @@ class DictionaryObject extends AbstractTypeObject
      * @returns \LaminasPdf\InternalType\AbstractTypeObject
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function makeClone(Pdf\ObjectFactory $factory, array &$processed, $mode)
+    public function makeClone(Pdf\ObjectFactory $factory, array &$processed, $mode): \LaminasPdf\InternalType\NullObject|\LaminasPdf\InternalType\DictionaryObject
     {
         if (isset($this->_items['Type'])) {
             if ($this->_items['Type']->value == 'Pages') {
@@ -188,7 +188,7 @@ class DictionaryObject extends AbstractTypeObject
      *
      * @param \LaminasPdf\InternalType\IndirectObject $parent
      */
-    public function setParentObject(IndirectObject $parent)
+    public function setParentObject(IndirectObject $parent): void
     {
         parent::setParentObject($parent);
 
@@ -202,9 +202,9 @@ class DictionaryObject extends AbstractTypeObject
      *
      * Dictionary is returned as an associative array
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function toPhp()
+    public function toPhp(): array
     {
         $phpArray = [];
 

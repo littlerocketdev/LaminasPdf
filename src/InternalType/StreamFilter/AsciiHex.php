@@ -29,7 +29,7 @@ class AsciiHex implements StreamFilterInterface
      * @return string
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function encode($data, $params = null)
+    public static function encode($data, $params = null): string
     {
         return bin2hex($data) . '>';
     }
@@ -42,7 +42,7 @@ class AsciiHex implements StreamFilterInterface
      * @return string
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public static function decode($data, $params = null)
+    public static function decode($data, $params = null): string
     {
         $hexCodeHigh = null;
         $output = '';

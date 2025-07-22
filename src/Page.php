@@ -430,7 +430,7 @@ class Page
      * @return \LaminasPdf\Page
      * @internal
      */
-    public function clonePage(ObjectFactory $factory, &$processed)
+    public function clonePage(ObjectFactory $factory, &$processed): \LaminasPdf\Page
     {
         // Clone dictionary object.
         // Do it explicitly to prevent sharing page attributes between different
@@ -468,7 +468,7 @@ class Page
      *
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function flush()
+    public function flush(): void
     {
         if ($this->_saveCount != 0) {
             throw new Exception\LogicException('Saved graphics state is not restored');
@@ -527,7 +527,7 @@ class Page
      * @param \LaminasPdf\ObjectFactory $objFactory
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function render(ObjectFactory $objFactory)
+    public function render(ObjectFactory $objFactory): void
     {
         $this->flush();
 
@@ -550,7 +550,7 @@ class Page
      * @param Color\ColorInterface $color
      * @return \LaminasPdf\Page
      */
-    public function setFillColor(Color\ColorInterface $color)
+    public function setFillColor(Color\ColorInterface $color): static
     {
         $this->_addProcSet('PDF');
         $this->_contents .= $color->instructions(false);
@@ -564,7 +564,7 @@ class Page
      * @param ColorInterface $color
      * @return \LaminasPdf\Page
      */
-    public function setLineColor(Color\ColorInterface $color)
+    public function setLineColor(Color\ColorInterface $color): static
     {
         $this->_addProcSet('PDF');
         $this->_contents .= $color->instructions(true);
@@ -578,7 +578,7 @@ class Page
      * @param float $width
      * @return \LaminasPdf\Page
      */
-    public function setLineWidth($width)
+    public function setLineWidth($width): static
     {
         $this->_addProcSet('PDF');
         $widthObj = new InternalType\NumericObject($width);
@@ -597,7 +597,7 @@ class Page
      * @param array $phase
      * @return \LaminasPdf\Page
      */
-    public function setLineDashingPattern($pattern, $phase = 0)
+    public function setLineDashingPattern($pattern, $phase = 0): static
     {
         $this->_addProcSet('PDF');
 
@@ -627,7 +627,7 @@ class Page
      * @param float $fontSize
      * @return \LaminasPdf\Page
      */
-    public function setFont(Resource\Font\AbstractFont $font, $fontSize)
+    public function setFont(Resource\Font\AbstractFont $font, $fontSize): static
     {
         $this->_addProcSet('Text');
         $fontName = $this->_attachResource('Font', $font);
@@ -648,7 +648,7 @@ class Page
      * @param \LaminasPdf\Style $style
      * @return \LaminasPdf\Page
      */
-    public function setStyle(Style $style)
+    public function setStyle(Style $style): static
     {
         $this->_style = $style;
 
@@ -677,7 +677,7 @@ class Page
      * @return \LaminasPdf\Page
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function setAlpha($alpha, $mode = 'Normal')
+    public function setAlpha($alpha, $mode = 'Normal'): static
     {
         if (!in_array($mode, ['Normal', 'Multiply', 'Screen', 'Overlay', 'Darken', 'Lighten', 'ColorDodge', 'ColorBurn', 'HardLight', 'SoftLight', 'Difference', 'Exclusion'])) {
             throw new Exception\InvalidArgumentException('Unsupported transparency mode.');
@@ -753,7 +753,7 @@ class Page
      * @return array
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function extractFonts()
+    public function extractFonts(): array
     {
         if ($this->_pageDictionary->Resources->Font === null) {
             // Page doesn't have any font attached
@@ -803,7 +803,7 @@ class Page
      * @return \LaminasPdf\Resource\Font\Extracted|null
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function extractFont($fontName)
+    public function extractFont($fontName): ?\LaminasPdf\Resource\Font\Extracted
     {
         if ($this->_pageDictionary->Resources->Font === null) {
             // Page doesn't have any font attached
@@ -882,7 +882,7 @@ class Page
      * @throws \LaminasPdf\Exception\ExceptionInterface
      * @todo check for the open paths
      */
-    public function saveGS()
+    public function saveGS(): static
     {
         $this->_saveCount++;
 
@@ -898,7 +898,7 @@ class Page
      * @return \LaminasPdf\Page
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function restoreGS()
+    public function restoreGS(): static
     {
         if ($this->_saveCount-- <= 0) {
             throw new Exception\LogicException('Restoring graphics state which is not saved');
@@ -919,7 +919,7 @@ class Page
      * @param float $endAngle Ending angle of the circle in radians
      * @return \LaminasPdf\Page    Fluid interface
      */
-    public function clipCircle($x, $y, $radius, $startAngle = null, $endAngle = null)
+    public function clipCircle($x, $y, $radius, $startAngle = null, $endAngle = null): static
     {
         $this->clipEllipse(
             $x - $radius,
@@ -950,7 +950,7 @@ class Page
      * @todo process special cases with $x2-$x1 == 0 or $y2-$y1 == 0
      *
      */
-    public function clipEllipse($x1, $y1, $x2, $y2, $startAngle = null, $endAngle = null)
+    public function clipEllipse($x1, $y1, $x2, $y2, $startAngle = null, $endAngle = null): static
     {
         $this->_addProcSet('PDF');
 
@@ -1037,7 +1037,7 @@ class Page
      * @param integer $fillMethod
      * @return \LaminasPdf\Page
      */
-    public function clipPolygon($x, $y, $fillMethod = self::FILL_METHOD_NON_ZERO_WINDING)
+    public function clipPolygon($x, array $y, $fillMethod = self::FILL_METHOD_NON_ZERO_WINDING): static
     {
         $path = null;
         $this->_addProcSet('PDF');
@@ -1076,7 +1076,7 @@ class Page
      * @param float $y2
      * @return \LaminasPdf\Page
      */
-    public function clipRectangle($x1, $y1, $x2, $y2)
+    public function clipRectangle($x1, $y1, $x2, $y2): static
     {
         $this->_addProcSet('PDF');
 
@@ -1102,7 +1102,7 @@ class Page
      * @param float $y2
      * @return \LaminasPdf\Page
      */
-    public function drawContentStream($cs, $x1, $y1, $x2, $y2)
+    public function drawContentStream($cs, $x1, $y1, $x2, $y2): static
     {
         /** @todo implementation */
         return $this;
@@ -1132,7 +1132,7 @@ class Page
      * @param mixed $param6
      * @return \LaminasPdf\Page
      */
-    public function drawCircle($x, $y, $radius, $param4 = null, $param5 = null, $param6 = null)
+    public function drawCircle($x, $y, $radius, $param4 = null, $param5 = null, $param6 = null): static
     {
         $this->drawEllipse(
             $x - $radius,
@@ -1167,7 +1167,7 @@ class Page
      * @todo process special cases with $x2-$x1 == 0 or $y2-$y1 == 0
      *
      */
-    public function drawEllipse($x1, $y1, $x2, $y2, $param5 = null, $param6 = null, $param7 = null)
+    public function drawEllipse($x1, $y1, $x2, $y2, $param5 = null, $param6 = null, $param7 = null): static
     {
         if ($param5 === null) {
             // drawEllipse($x1, $y1, $x2, $y2);
@@ -1291,7 +1291,7 @@ class Page
      * @param float $y2
      * @return \LaminasPdf\Page
      */
-    public function drawImage(Resource\Image\AbstractImage $image, $x1, $y1, $x2, $y2)
+    public function drawImage(Resource\Image\AbstractImage $image, $x1, $y1, $x2, $y2): static
     {
         $this->_addProcSet('PDF');
 
@@ -1320,7 +1320,7 @@ class Page
      * @param float $y
      * @return \LaminasPdf\Page
      */
-    public function drawLayoutBox($box, $x, $y)
+    public function drawLayoutBox($box, $x, $y): static
     {
         /** @todo implementation */
         return $this;
@@ -1335,7 +1335,7 @@ class Page
      * @param float $y2
      * @return \LaminasPdf\Page
      */
-    public function drawLine($x1, $y1, $x2, $y2)
+    public function drawLine($x1, $y1, $x2, $y2): static
     {
         $this->_addProcSet('PDF');
 
@@ -1366,10 +1366,10 @@ class Page
      */
     public function drawPolygon(
         $x,
-        $y,
+        array $y,
         $fillType = self::SHAPE_DRAW_FILL_AND_STROKE,
         $fillMethod = self::FILL_METHOD_NON_ZERO_WINDING
-    ) {
+    ): static {
         $path = null;
         $this->_addProcSet('PDF');
 
@@ -1428,7 +1428,7 @@ class Page
      * @param integer $fillType
      * @return \LaminasPdf\Page
      */
-    public function drawRectangle($x1, $y1, $x2, $y2, $fillType = self::SHAPE_DRAW_FILL_AND_STROKE)
+    public function drawRectangle($x1, $y1, $x2, $y2, $fillType = self::SHAPE_DRAW_FILL_AND_STROKE): static
     {
         $this->_addProcSet('PDF');
 
@@ -1482,7 +1482,7 @@ class Page
         $y2,
         $radius,
         $fillType = self::SHAPE_DRAW_FILL_AND_STROKE
-    ) {
+    ): static {
 
         $this->_addProcSet('PDF');
 
@@ -1610,7 +1610,7 @@ class Page
      * @return \LaminasPdf\Page
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function drawText($text, $x, $y, $charEncoding = '')
+    public function drawText($text, $x, $y, $charEncoding = ''): static
     {
         if ($this->_font === null) {
             throw new Exception\LogicException('Font has not been set');
@@ -1635,7 +1635,7 @@ class Page
      * @param \LaminasPdf\Annotation\AbstractAnnotation $annotation
      * @return \LaminasPdf\Page
      */
-    public function attachAnnotation(Annotation\AbstractAnnotation $annotation)
+    public function attachAnnotation(Annotation\AbstractAnnotation $annotation): static
     {
         $annotationDictionary = $annotation->getResource();
         if (
@@ -1665,7 +1665,7 @@ class Page
      *
      * @return float
      */
-    public function getHeight()
+    public function getHeight(): int|float
     {
         return $this->_pageDictionary->MediaBox->items[3]->value -
             $this->_pageDictionary->MediaBox->items[1]->value;
@@ -1676,7 +1676,7 @@ class Page
      *
      * @return float
      */
-    public function getWidth()
+    public function getWidth(): int|float
     {
         return $this->_pageDictionary->MediaBox->items[2]->value -
             $this->_pageDictionary->MediaBox->items[0]->value;
@@ -1688,7 +1688,7 @@ class Page
      * @return \LaminasPdf\Page
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
-    public function pathClose()
+    public function pathClose(): static
     {
         /** @todo implementation */
         return $this;
@@ -1701,7 +1701,7 @@ class Page
      * @param float $y - the Y co-ordinate to move to
      * @return \LaminasPdf\Page
      */
-    public function pathLine($x, $y)
+    public function pathLine($x, $y): static
     {
         /** @todo implementation */
         return $this;
@@ -1715,7 +1715,7 @@ class Page
      * @param float $y - the Y co-ordinate to move to
      * @return \LaminasPdf\Page
      */
-    public function pathMove($x, $y)
+    public function pathMove($x, $y): static
     {
         /** @todo implementation */
         return $this;
@@ -1731,7 +1731,7 @@ class Page
      * @param string $procSet (optional) Name of ProcSet to add.
      * @return \LaminasPdf\Page
      */
-    public function rawWrite($data, $procSet = null)
+    public function rawWrite(string $data, $procSet = null): static
     {
         if (!empty($procSet)) {
             $this->_addProcSet($procSet);
@@ -1749,7 +1749,7 @@ class Page
      * @param float $angle Angle of rotation in radians
      * @return \LaminasPdf\Page Fluid Interface
      */
-    public function rotate($x, $y, $angle)
+    public function rotate($x, $y, $angle): static
     {
         $cos = new InternalType\NumericObject(cos($angle));
         $sin = new InternalType\NumericObject(sin($angle));
@@ -1777,7 +1777,7 @@ class Page
      * @param float $yScale - Y dimention scale factor
      * @return \LaminasPdf\Page
      */
-    public function scale($xScale, $yScale)
+    public function scale($xScale, $yScale): static
     {
         $xScaleObj = new InternalType\NumericObject($xScale);
         $yScaleObj = new InternalType\NumericObject($yScale);
@@ -1795,7 +1795,7 @@ class Page
      * @param float $yShift - Y coordinate shift
      * @return \LaminasPdf\Page
      */
-    public function translate($xShift, $yShift)
+    public function translate($xShift, $yShift): static
     {
         $xShiftObj = new InternalType\NumericObject($xShift);
         $yShiftObj = new InternalType\NumericObject($yShift);
@@ -1815,7 +1815,7 @@ class Page
      * @param float $yAngle - Y axis skew angle
      * @return \LaminasPdf\Page
      */
-    public function skew($x, $y, $xAngle, $yAngle)
+    public function skew($x, $y, $xAngle, $yAngle): static
     {
         $tanXObj = new InternalType\NumericObject(tan($xAngle));
         $tanYObj = new InternalType\NumericObject(-tan($yAngle));
