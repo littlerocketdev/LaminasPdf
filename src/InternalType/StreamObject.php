@@ -176,7 +176,7 @@ class StreamObject extends IndirectObject
 
         foreach ($this->_initialDictionaryData['Filter'] as $id => $filterName) {
             $valueRef = &$this->_value->value;
-//            $this->_value->value->touch();
+            //            $this->_value->value->touch();
             switch ($filterName) {
                 case 'ASCIIHexDecode':
                     $valueRef = StreamFilter\AsciiHex::decode($valueRef);
@@ -232,7 +232,7 @@ class StreamObject extends IndirectObject
 
         foreach ($filters as $id => $filterName) {
             $valueRef = &$this->_value->value;
-            $this->_value->value->touch();
+            //$this->_value->value->touch();
             switch ($filterName) {
                 case 'ASCIIHexDecode':
                     $valueRef = StreamFilter\AsciiHex::encode($valueRef);
@@ -311,7 +311,7 @@ class StreamObject extends IndirectObject
         if ($property == 'value') {
             $valueRef = &$this->_value->value;
             $valueRef = $value;
-//            $this->_value->value->touch();
+            //            $this->_value->value->touch();
 
             $this->_streamDecoded = true;
 
