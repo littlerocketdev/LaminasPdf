@@ -196,7 +196,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      * @param \LaminasPdf\ObjectFactory $factory Object factory for newly created indirect objects
      * @param SplObjectStorage $processedActions list of already processed actions
      *                                            (used to prevent infinity loop caused by cyclic references)
-     * @return \LaminasPdf\InternalType\IndirectObject|\LaminasPdf\InternalType\IndirectObjectReference
+     * @return InternalType\AbstractTypeObject|InternalType\DictionaryObject|InternalType\IndirectObject|InternalType\IndirectObjectReference
      * @internal
      */
     public function dumpAction(ObjectFactory $factory, \SplObjectStorage $processedActions = null)
@@ -306,7 +306,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return boolean
      */
-    public function valid()
+    public function valid(): bool
     {
         return current($this->next) !== false;
     }
@@ -316,7 +316,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return \LaminasPdf\Action\AbstractAction|null
      */
-    public function getChildren()
+    public function getChildren(): ?RecursiveIterator
     {
         return current($this->next);
     }
@@ -326,7 +326,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return bool  whether container has any pages
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return count($this->next) > 0;
     }
@@ -341,7 +341,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return is_countable($this->childOutlines) ? count($this->childOutlines) : 0;
     }

@@ -95,7 +95,7 @@ class NameTree implements ArrayAccess, Countable, Iterator
     }
 
 
-    public function valid()
+    public function valid(): bool
     {
         return current($this->_items) !== false;
     }
@@ -107,13 +107,13 @@ class NameTree implements ArrayAccess, Countable, Iterator
     }
 
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->_items);
     }
 
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->_items[$offset];
     }
@@ -140,7 +140,7 @@ class NameTree implements ArrayAccess, Countable, Iterator
         $this->_items = [];
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->_items);
     }
