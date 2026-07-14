@@ -159,7 +159,7 @@ abstract class AbstractOutline implements
      * Set outline options
      *
      * @param array $options
-     * @return \LaminasPdf\Action\AbstractAction
+     * @return AbstractOutline
      * @throws \LaminasPdf\Exception\ExceptionInterface
      */
     public function setOptions(array $options)
@@ -191,7 +191,6 @@ abstract class AbstractOutline implements
 
                 default:
                     throw new Exception\InvalidArgumentException("Unknown option name - '$key'.");
-                    break;
             }
         }
 
@@ -320,7 +319,7 @@ abstract class AbstractOutline implements
      *
      * @return boolean
      */
-    public function valid()
+    public function valid(): bool
     {
         return current($this->childOutlines) !== false;
     }
@@ -330,7 +329,7 @@ abstract class AbstractOutline implements
      *
      * @return \LaminasPdf\Outline\AbstractOutline|null
      */
-    public function getChildren()
+    public function getChildren(): ?RecursiveIterator
     {
         return current($this->childOutlines);
     }
@@ -340,7 +339,7 @@ abstract class AbstractOutline implements
      *
      * @return bool  whether container has any pages
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return count($this->childOutlines) > 0;
     }
@@ -355,7 +354,7 @@ abstract class AbstractOutline implements
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->childOutlines);
     }
